@@ -1,0 +1,62 @@
+// Hoisting
+
+// Contoh hoisting dengan variabel
+console.log(myVar); // Output: undefined
+var myVar = 10;
+console.log(myVar); // Output: 10
+
+// Contoh hoisting dengan fungsi
+sayHello(); // Output: Hello!
+
+function sayHello() {
+  console.log("Hello!");
+}
+
+// Execution Context
+
+// Global Execution Context
+var globalVar = "I am global";
+
+function myFunction() {
+  // Function Execution Context
+  var localVar = "I am local";
+  
+  function innerFunction() {
+    // Another Function Execution Context
+    var innerVar = "I am inner";
+    console.log(globalVar); // Output: I am global
+    console.log(localVar); // Output: I am local
+    console.log(innerVar); // Output: I am inner
+  }
+  
+  innerFunction();
+}
+
+myFunction();
+
+// Scope
+
+// Global scope
+var globalVariable = "This is a global variable";
+
+function scopeExample() {
+  // Local scope
+  var localVariable = "This is a local variable";
+  
+  if (true) {
+    // Block scope (ES6)
+    let blockVariable = "This is a block variable";
+    console.log(blockVariable); // Output: This is a block variable
+  }
+  
+  console.log(globalVariable); // Output: This is a global variable
+  console.log(localVariable); // Output: This is a local variable
+  // console.log(blockVariable); // Error: blockVariable is not defined
+}
+
+scopeExample();
+
+// Trying to access local and block scoped variables outside their scope
+console.log(globalVariable); // Output: This is a global variable
+// console.log(localVariable); // Error: localVariable is not defined
+// console.log(blockVariable); // Error: blockVariable is not defined
